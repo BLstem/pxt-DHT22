@@ -15,5 +15,5 @@ MIT
 (The metadata above is needed for package search.)
 
 ```package
-github:DoraLC/pxt-DHT22
+github:BLstem/pxt-DHT22
 ```
