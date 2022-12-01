@@ -1,5 +1,5 @@
 {
-    "name": "pxt-DHT22",
+    "name": "DHT22",
     "version": "0.0.1",
     "description": "",
     "dependencies": {
@@ -8,7 +8,8 @@
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "_locales/zh-tw/DHT22-string.json"
     ],
     "testFiles": [
         "test.ts"
