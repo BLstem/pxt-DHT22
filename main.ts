@@ -1,7 +1,7 @@
 enum dht22type {
-    //% block="Celsius"
+    //% block="Celsius(\u00B0C)"
     Celsius,
-    //% block="Fahrenheit"
+    //% block="Fahrenheit(\u00B0F)"
     Fahrenheit,
     //% block="humidity"
     humidity

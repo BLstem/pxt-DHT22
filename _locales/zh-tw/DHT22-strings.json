@@ -1,8 +1,8 @@
 {
     "DHT22.dht22_read|block":"讀取DHT22 |引腳 %pin_arg",
     "DHT22.data|block":"數據 %data_type",
-    "dht22type.Celsius|block":"攝氏温度(\u00B0\\C)",
-    "dht22type.Fahrenheit|block":"華氏温度(\u00B0\\F)",
+    "dht22type.Celsius|block":"攝氏温度(\u00B0C)",
+    "dht22type.Fahrenheit|block":"華氏温度(\u00B0F)",
     "dht22type.humidity|block":"濕度",
     "{id:category}DHT22":"DHT22"
 }
