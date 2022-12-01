@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh-tw/DHT22-string.json"
+        "_locales/zh-tw/DHT22-strings.json"
     ],
     "testFiles": [
         "test.ts"
