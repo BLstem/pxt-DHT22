@@ -1,17 +1,27 @@
 {
-    "name": "pxt-DHT22",
+    "name": "DHT22",
     "version": "0.0.1",
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "microphone": "*"
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "_locales/zh-tw/DHT22-strings.json"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "public": false
+    "public": false,
+    "targetVersions": {
+        "target": "5.0.12",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
 }
