@@ -1,10 +1,17 @@
 enum dht22type {
-    //% block="Celsius(\u00B0C)"
+    //% block="Celsius"
     Celsius,
-    //% block="Fahrenheit(\u00B0F)"
+    //% block="Fahrenheit"
     Fahrenheit,
     //% block="humidity"
     humidity
+}
+
+enum mbVersion {
+    //% block="Version 1"
+    v1,
+    //% block="Version 2"
+    v2
 }
 
 //% color=#F6421B icon="\uf2c9" block="DHT22"
@@ -12,13 +19,28 @@ namespace DHT22 {
     let temp_C = -999
     let temp_F = -999
     let humid = -999
+    let counter_limit = 2
 
     let pin = DigitalPin.P0
     function signal_dht22(pin: DigitalPin): void {
         pins.digitalWritePin(pin, 0)
         basic.pause(18)
+        pins.digitalReadPin(pin)
         pins.setPull(pin, PinPullMode.PullUp)
-        control.waitMicros(40)
+    }
+
+    //% block="Choose micro:bit %mbver"
+    //% weight=1000
+    export function microbitVersion(mbver: mbVersion) {
+        switch (mbver) {
+            case 0:
+                counter_limit = 2
+                break
+            case 1:
+                counter_limit = 12
+                break
+            default:
+        }
     }
 
     /**
@@ -30,7 +52,7 @@ namespace DHT22 {
     //% pin_arg.fieldOptions.tooltips="false"
     //% weight=100
     export function dht22_read(pin_arg: DigitalPin) {
-        basic.pause(3000)
+        basic.pause(2000)
         pin = pin_arg
         signal_dht22(pin)
 
@@ -44,13 +66,25 @@ namespace DHT22 {
         let temp_raw = 0
         let check_sum = 0
 
+        let timeOut = false
+
         for (let i = 0; i <= 40 - 1; i++) {
             while (pins.digitalReadPin(pin) == 0);
             counter = 0
             while (pins.digitalReadPin(pin) == 1) {
                 counter += 1;
+                if (counter > 5000) {
+                    //basic.showNumber(0)
+                    timeOut = true
+                    break
+                }
             }
-            if (counter > 2) {
+
+            if (timeOut) {
+                break
+            }
+
+            if (counter > counter_limit) {
                 if (i < 16) {
                     humid_raw = humid_raw + (1 << (15 - i));
                 }
@@ -63,9 +97,15 @@ namespace DHT22 {
             }
         }
 
-        temp_C = temp_raw / 10
-        temp_F = temp_C * 9 / 5 + 32
-        humid = humid_raw / 10
+        if (!timeOut) {
+            temp_C = temp_raw / 10
+            temp_F = temp_C * 9 / 5 + 32
+            humid = humid_raw / 10
+
+            //basic.clearScreen()
+        }
+
+
     }
 
     //% block="data %data_type"
