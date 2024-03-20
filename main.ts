@@ -8,9 +8,9 @@ enum dht22type {
 }
 
 enum mbVersion {
-    //% block="Version 1"
+    //% block="V1"
     v1,
-    //% block="Version 2"
+    //% block="V2"
     v2
 }
 
@@ -29,7 +29,7 @@ namespace DHT22 {
         pins.setPull(pin, PinPullMode.PullUp)
     }
 
-    //% block="Choose micro:bit %mbver"
+    //% block="Choose micro:bit version %mbver"
     //% weight=1000
     export function microbitVersion(mbver: mbVersion) {
         switch (mbver) {
