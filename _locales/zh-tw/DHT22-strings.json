@@ -1,4 +1,5 @@
 {
+    "DHT22.microbitVersion|block":"選擇micro:bit %mbver",
     "DHT22.dht22_read|block":"讀取DHT22 |引腳 %pin_arg",
     "DHT22.data|block":"數據 %data_type",
     "dht22type.Celsius|block":"攝氏温度(\u00B0C)",
